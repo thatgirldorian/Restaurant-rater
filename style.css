@@ -18,13 +18,13 @@ p {
 
 /* Anime container styles */
 .container {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 20px;
 }
 
 .anime-box {
     display: inline-block;
-    margin: 40px 100px 40px 100px;
+    margin: 40px 50px 40px 150px;
     vertical-align: middle;
     padding-left: 20px;
     /* padding-top: 20px; */
@@ -36,13 +36,13 @@ p {
 }
 
 .left-box {
-    /* background-color: blue; */
+    background-color: gainsboro;
     width: 500px;
     height: 500px;
 }
 
 .right-box {
-    /* background-color: red; */
+    background-color: blanchedalmond;
     width: 500px;
     height: 500px;
 }
@@ -54,7 +54,7 @@ p {
     color: black;
     position: relative;
     left: 170px;
-    bottom: 250px;
+    bottom: 200px;
     overflow: auto;
 }
 
