@@ -1,6 +1,6 @@
 # Anime-rater
 
-This is an application that . I created it with vanilla JavaScript and Bulma CSS.
+This is an application that allow you rate anime shows based on score. You can also look up an anime's. I created it with vanilla JavaScript and Bulma CSS.
 
 <h3>Issued faced & resolution:</h3>
 
