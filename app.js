@@ -3,7 +3,7 @@ const fetchData = async (searchedAnime) => {
     console.log('Start fetching data')
     const response = await axios.get("https://api.aniapi.com/v1/anime", {
         headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE1NzUiLCJuYmYiOjE2NDk1MzExMzYsImV4cCI6MTY1MjEyMzEzNiwiaWF0IjoxNjQ5NTMxMTM2fQ.6EnZs5eZcnThqtd6HUW7xM_Ysm-COK6ubyKyxzYdahw',
+            'Authorization': 'Bearer ****',
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
