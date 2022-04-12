@@ -11,6 +11,10 @@ const fetchData = async (searchedAnime) => {
             title: searchedAnime
         }
     })
+
+    //error handling for when we search for non-existent anime
+    // if (animeData)
+
     //show request
     let animeData = response.data.data.documents 
     return animeData
