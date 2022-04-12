@@ -23,11 +23,11 @@ p {
 }
 
 .anime-box {
-    display: inline-block;
+    /* display: inline-block; */
     margin: 40px 50px 40px 150px;
-    vertical-align: middle;
-    padding-left: 20px;
-    /* padding-top: 20px; */
+    /* vertical-align: middle; */
+    /* padding-left: 20px;
+    padding-top: 20px; */
 }
 
 .anime-box img {
@@ -37,14 +37,14 @@ p {
 
 .left-box {
     background-color: gainsboro;
-    width: 500px;
-    height: 500px;
+    /* width: 300px;
+    height: 500px; */
 }
 
 .right-box {
     background-color: blanchedalmond;
-    width: 500px;
-    height: 500px;
+    /* width: 500px;
+    height: 500px; */
 }
 
 /* Anime info styles */
@@ -63,12 +63,65 @@ p {
 }
 
 .anime-ratings {
-    margin-top: -85px;
+    /* margin-top: -35px; */
 }
 
 .anime-ratings p {
-    padding: 10px;
-    margin-bottom: 0;
-    width: 20%;
+    padding: 5px 15px 5px 10px;
+    margin-bottom: 10px;
+    width: 25%;
     border: 1px solid black;
+    text-align: center;
 }
+
+
+/* Premade & Bulma CSS styles */
+/* .tutorial {
+        width: 600px;
+        text-align: center;
+        margin: auto;
+    }
+    
+    figure.image {
+        display: flex;
+        justify-content: center;
+        background-color: black;
+    }
+    
+    figure .image img {
+        width: 128px;
+    }
+    
+    .notification {
+        margin-top: 20px !important;
+    }
+    
+    .results {
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+    
+    .title .icon {
+        margin-left: 15px;
+    }
+    
+    .hero {
+        margin-bottom: 20px;
+    }
+    
+    .forms {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        height: 60px;
+    }
+    
+    .dropdown-item img {
+        height: 50px;
+        margin-right: 10px;
+    }
+     */
