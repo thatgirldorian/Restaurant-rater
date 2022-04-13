@@ -22,8 +22,8 @@ const fetchData = async (searchedAnime) => {
 
 //set up widget autocomplete function 
 const root = document.querySelector('.autocomplete')
-root,innerHTML = `
-    <label><b>Search for a new anime below</b></label>
+root.innerHTML = `
+    <label><b>Search for a new anime below:</b></label>
     <input class="input" />
         <div class="dropdown">
             <div class="dropdown-menu">
@@ -35,23 +35,30 @@ root,innerHTML = `
 
 const input = document.querySelector('input')
 const dropdown = document.querySelector('.dropdown')
-const input = document.querySelector('.results')
+const resultsWrapper = document.querySelector('.results')
+
 
 //Select the input element and add event listeners to find a show when text is added
 const onInput = async event => {
         const animes = await fetchData(event.target.value)
-        console.log(animes)
+        // console.log(animes)
 
+        //clear our results when a new search is made
+        resultsWrapper.innerHTML = ''
+
+        //open up a dropdown to add movies
+        dropdown.classList.add('is-active')
         // get each anime
         for (let anime of animes) {
-            const div = document.createElement('div')
+            const animeOption = document.createElement('a')
+            const imgSrc = anime.banner_image === 'N/A' ? '' : anime.banner_image;
 
-            div.innerHTML = `
-            <img src="${anime.banner_image}" />
-            <h2>${anime.titles.en}</h2>
-            <p>${anime.descriptions.en}</p>
+            animeOption.classList.add('dropdown-item')
+            animeOption.innerHTML = `
+            <img src="${imgSrc}" />
+            ${anime.titles.en}
             `
-            document.querySelector('#target').appendChild(div)
+            resultsWrapper.appendChild(animeOption)
         }
 }
     //get the value of whatever is typed, but set timeout for unnecessary requests
