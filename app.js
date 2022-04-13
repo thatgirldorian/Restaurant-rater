@@ -20,8 +20,22 @@ const fetchData = async (searchedAnime) => {
     return animeData
 }
 
+//set up widget autocomplete function 
+const root = document.querySelector('.autocomplete')
+root,innerHTML = `
+    <label><b>Search for a new anime below</b></label>
+    <input class="input" />
+        <div class="dropdown">
+            <div class="dropdown-menu">
+                <div class="dropdown-content results"></div>
+            </div>
+        </div>
+`
+
 
 const input = document.querySelector('input')
+const dropdown = document.querySelector('.dropdown')
+const input = document.querySelector('.results')
 
 //Select the input element and add event listeners to find a show when text is added
 const onInput = async event => {
