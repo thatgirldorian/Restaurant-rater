@@ -41,7 +41,11 @@ const resultsWrapper = document.querySelector('.results')
 //Select the input element and add event listeners to find a show when text is added
 const onInput = async event => {
         const animes = await fetchData(event.target.value)
-        // console.log(animes)
+        //close dropdown if our search does not show any show at all
+        if (!animes.length) {
+            dropdown.classList.remove('is-active')
+            return
+        }
 
         //clear our results when a new search is made
         resultsWrapper.innerHTML = ''
@@ -63,3 +67,10 @@ const onInput = async event => {
 }
     //get the value of whatever is typed, but set timeout for unnecessary requests
     input.addEventListener('input', debounce(onInput, 500))
+
+    //automatically close the dropdown 
+    document.addEventListener('click', event => {
+        if (!root.contains(event.target)) {
+            dropdown.classList.remove('is-active')
+        }
+    })
