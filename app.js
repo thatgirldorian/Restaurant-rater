@@ -12,11 +12,12 @@ const fetchData = async (searchedAnime) => {
         }
     })
 
-    //error handling for when we search for non-existent anime
-    // if (animeData)
 
-    //show request
+    //show request and handle errors for when we we search for non-existent anime
     let animeData = response.data.data.documents 
+        if (response.data.message === "Zero anime found") {
+            return []
+        } else
     return animeData
 }
 
@@ -41,21 +42,20 @@ const resultsWrapper = document.querySelector('.results')
 //Select the input element and add event listeners to find a show when text is added
 const onInput = async event => {
         const animes = await fetchData(event.target.value)
-        //close dropdown if our search does not show any show at all
-        if (!animes.length) {
+        // close dropdown if our search does not show any show at all
+        if (!animes.length === 0) {
             dropdown.classList.remove('is-active')
-            return
         }
 
-        //clear our results when a new search is made
-        resultsWrapper.innerHTML = ''
 
+        //handle broken images
+        resultsWrapper.innerHTML = ' '
         //open up a dropdown to add movies
         dropdown.classList.add('is-active')
         // get each anime
         for (let anime of animes) {
             const animeOption = document.createElement('a')
-            const imgSrc = anime.banner_image === 'N/A' ? '' : anime.banner_image;
+            const imgSrc = anime.cover_image || anime.banner_image;
 
             animeOption.classList.add('dropdown-item')
             animeOption.innerHTML = `
