@@ -59,9 +59,19 @@ const onInput = async event => {
 
             animeOption.classList.add('dropdown-item')
             animeOption.innerHTML = `
-            <img src="${imgSrc}" />
+            <img src="${imgSrc}" /> <br>
             ${anime.titles.en}
             `
+
+            //handling anime selection
+            animeOption.addEventListener('click', () => {
+                dropdown.classList.remove('is-active')
+                input.value = anime.titles.en
+
+                //make a follow-up request to show anime info with a helper function
+                onAnimeSelect(anime)
+            })
+
             resultsWrapper.appendChild(animeOption)
         }
 }
@@ -74,3 +84,44 @@ const onInput = async event => {
             dropdown.classList.remove('is-active')
         }
     })
+
+    const onAnimeSelect = async anime => {
+        const response = await axios.get("https://api.aniapi.com/v1/anime", {
+        headers: {
+            'Authorization': 'Bearer ****',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        params: {
+            mal_id: anime.mal_id
+        }
+    })
+    let animeInformation = response.data.data.documents
+    console.log(animeInformation)
+
+    //render our anime anime  information
+    document.querySelector('#summary').innerHTML = animeTemplate.response.data.data.documents
+    }
+
+    //helper function to create out anime info on our web page
+    animeTemplate = (animeDetail) => {
+
+        const imgSrc = anime.cover_image || anime.banner_image;
+
+        return `
+        <article class="media">
+            <figure class="media-left">
+                <p class="image">
+                    <img src="${imgSrc}">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <h1>${animeDetail.titles.en}</h1>
+                    <h4>${animeDetail.genres}</h4>
+                    <p>${animeDetail.descriptions.en}</p>
+                </div>
+            </div>
+        </article>
+        `
+    }
