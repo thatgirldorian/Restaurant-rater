@@ -43,10 +43,10 @@ const resultsWrapper = document.querySelector('.results')
 const onInput = async event => {
         const animes = await fetchData(event.target.value)
         // close dropdown if our search does not show any show at all
-        if (!animes.length === 0) {
+        if (!animes.length) {
             dropdown.classList.remove('is-active')
+            return;
         }
-
 
         //handle broken images
         resultsWrapper.innerHTML = ' '
