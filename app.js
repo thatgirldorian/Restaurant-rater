@@ -108,6 +108,9 @@ const onInput = async event => {
     //helper function to create out anime info on our web page
     const animeTemplate = animeDetail => {
         const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
+        const genres = animeDetail.genres.slice(0, 3)
+        const animeDesc = animeDetail.descriptions.en
+
         console.log(`This is ${animeDetail} `)
         return `
         <article class="media">
@@ -119,8 +122,8 @@ const onInput = async event => {
         <div class="media-content">
             <div class="content">
                 <h1>${animeDetail.titles.en}</h1>
-                <h4>${animeDetail.genres}</h4>
-                <p>${animeDetail.descriptions.en}</p>
+                <h4>${genres.join(', ')}</h4>
+                <p>${animeDesc.substring(0, 100).concat('...')}</p>
             </div>
         </div>
     </article>
