@@ -43,10 +43,11 @@ const resultsWrapper = document.querySelector('.results')
 const onInput = async event => {
         const animes = await fetchData(event.target.value)
         // close dropdown if our search does not show any show at all
-        if (!animes.length) {
+        if (!event.target.value) {
             dropdown.classList.remove('is-active')
             return;
         }
+
 
         //handle broken images
         resultsWrapper.innerHTML = ' '
@@ -67,7 +68,6 @@ const onInput = async event => {
             animeOption.addEventListener('click', () => {
                 dropdown.classList.remove('is-active')
                 input.value = anime.titles.en
-
                 //make a follow-up request to show anime info with a helper function
                 onAnimeSelect(anime)
             })
@@ -101,13 +101,13 @@ const onInput = async event => {
     console.log(animeInformation)
 
     //render our anime anime  information
-    document.querySelector('#summary').innerHTML = animeTemplate(animeInformation) 
+    document.querySelector('#summary').innerHTML = animeTemplate(animeInformation[0]) 
     }
     
 
     //helper function to create out anime info on our web page
     const animeTemplate = animeDetail => {
-        const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
+        // const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
         console.log(`This is ${animeDetail} `)
         return `
                 <p class="image">
