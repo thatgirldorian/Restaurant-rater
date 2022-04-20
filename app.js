@@ -107,12 +107,23 @@ const onInput = async event => {
 
     //helper function to create out anime info on our web page
     const animeTemplate = animeDetail => {
-        // const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
+        const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
         console.log(`This is ${animeDetail} `)
         return `
-                <p class="image">
-                    <img src="${animeDetail.cover_image}">
-                </p>
+        <article class="media">
+        <figure class="media-left">
+            <p class="image">
+                <img src="${imgSrc}">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <h1>${animeDetail.titles.en}</h1>
+                <h4>${animeDetail.genres}</h4>
+                <p>${animeDetail.descriptions.en}</p>
+            </div>
+        </div>
+    </article>
         `
     }
 
