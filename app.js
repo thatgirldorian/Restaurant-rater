@@ -1,5 +1,5 @@
 //Use the axios library to make HTTP requests with a helper function to the API
-const fetchData = async (searchedAnime) => {
+const fetchData = async searchedAnime => {
     console.log('Start fetching data')
     const response = await axios.get("https://api.aniapi.com/v1/anime", {
         headers: {
@@ -86,42 +86,35 @@ const onInput = async event => {
     })
 
     const onAnimeSelect = async anime => {
-        const response = await axios.get("https://api.aniapi.com/v1/anime", {
+        const response = await axios.get("https://api.aniapi.com/v1/anime/", {
         headers: {
             'Authorization': 'Bearer ****',
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
         params: {
-            mal_id: anime.mal_id
+            anilist_id: anime.anilist_id
         }
     })
+
     let animeInformation = response.data.data.documents
     console.log(animeInformation)
 
     //render our anime anime  information
-    document.querySelector('#summary').innerHTML = animeTemplate.response.data.data.documents
+    document.querySelector('#summary').innerHTML = animeTemplate(animeInformation) 
     }
+    
 
     //helper function to create out anime info on our web page
-    animeTemplate = (animeDetail) => {
-
-        const imgSrc = anime.cover_image || anime.banner_image;
-
+    const animeTemplate = animeDetail => {
+        const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
+        console.log(`This is ${animeDetail} `)
         return `
-        <article class="media">
-            <figure class="media-left">
                 <p class="image">
-                    <img src="${imgSrc}">
+                    <img src="${animeDetail.cover_image}">
                 </p>
-            </figure>
-            <div class="media-content">
-                <div class="content">
-                    <h1>${animeDetail.titles.en}</h1>
-                    <h4>${animeDetail.genres}</h4>
-                    <p>${animeDetail.descriptions.en}</p>
-                </div>
-            </div>
-        </article>
         `
     }
+
+    
+
