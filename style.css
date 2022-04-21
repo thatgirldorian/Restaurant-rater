@@ -5,10 +5,18 @@ body {
 
 /* Header styles */
 header {
+    padding: 10px 0 10px 0;
     color: black;
     text-align: center;
-    background-color: pink;
-    padding: 5px 0 5px 0;
+    /* Created with https://www.css-gradient.com */
+    background: #52BD95;
+    background: -webkit-linear-gradient(bottom, #52BD95, #F8F8F8);
+    background: -moz-linear-gradient(bottom, #52BD95, #F8F8F8);
+    background: linear-gradient(to top, #52BD95, #F8F8F8);
+}
+
+header h1 {
+    font-weight: bold;
 }
 
 p {
