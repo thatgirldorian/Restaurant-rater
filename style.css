@@ -19,7 +19,7 @@ p {
 /* Anime container styles */
 .container {
     /* border: 1px solid black; */
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .anime-box {
@@ -36,69 +36,41 @@ p {
 }
 
 .left-box {
-    background-color: gainsboro;
+    border: 1px solid gainsboro;
+    border-radius: 16px;
+    /* background-color: gainsboro; */
     /* width: 300px;
     height: 500px; */
 }
 
 .right-box {
-    background-color: blanchedalmond;
+    border: 1px solid gainsboro;
+    border-radius: 16px;
     /* width: 500px;
     height: 500px; */
 }
 
-/* Anime info styles */
-
-#anime-title, #anime-desc {
-    /* display: inline-block; */
-    color: black;
-    position: relative;
-    left: 170px;
-    bottom: 200px;
-    overflow: auto;
-}
-
-#anime-desc p {
-    overflow: auto;
-}
-
-.anime-ratings {
-    /* margin-top: -35px; */
-}
-
-.anime-ratings p {
-    padding: 5px 15px 5px 10px;
-    margin-bottom: 10px;
-    width: 25%;
-    border: 1px solid black;
-    text-align: center;
-}
-
-
 /* Premade & Bulma CSS styles */
-/* .tutorial {
+    .tutorial {
         width: 600px;
         text-align: center;
         margin: auto;
     }
     
-    figure.image {
+    figure .image {
         display: flex;
-        justify-content: center;
-        background-color: black;
+        /* justify-content: center; */
+        margin-top: -20px;
+        background-color: white;
     }
     
     figure .image img {
-        width: 128px;
+        width: 120px;
     }
+
     
     .notification {
         margin-top: 20px !important;
-    }
-    
-    .results {
-        max-height: 500px;
-        overflow-y: scroll;
     }
     
     .title .icon {
@@ -113,15 +85,26 @@ p {
         display: flex;
         justify-content: space-around;
     }
+
+    .results {
+        max-height: 600px;
+        max-width: 600px;
+        overflow-y: scroll;
+    }
     
     .dropdown-item {
         display: flex;
         align-items: center;
-        height: 60px;
+        height: 150px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        /* background-color: red; */
     }
     
     .dropdown-item img {
-        height: 50px;
+        height: 150px;
+        width: 150px;
+        padding-top: 0;
         margin-right: 10px;
     }
-     */
+    

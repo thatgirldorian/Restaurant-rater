@@ -60,7 +60,7 @@ const onInput = async event => {
 
             animeOption.classList.add('dropdown-item')
             animeOption.innerHTML = `
-            <img src="${imgSrc}" /> <br>
+            <img src="${imgSrc}" /> 
             ${anime.titles.en}
             `
 
@@ -127,6 +127,20 @@ const onInput = async event => {
             </div>
         </div>
     </article>
+
+    <article class="notification is-primary">
+        <p class="title">${animeDetail.score}</p>
+        <p class="subtitle">Score</p>
+    </article>
+    <article class="notification is-primary">
+        <p class="title">${animeDetail.episodes_count}</p>
+        <p class="subtitle">Episodes count</p>
+    </article>
+    <article class="notification is-primary">
+        <p class="title">${animeDetail.season_year}</p>
+        <p class="subtitle">Season year</p>
+    </article>
+    
         `
     }
 
