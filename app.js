@@ -9,6 +9,8 @@ const autocompleteConfig = {
                     `
     },
     onOptionSelect(anime) {
+        //hide tutorial/notification bar when anime show is selected
+        document.querySelector('.tutorial').classList.add('is-hidden')
         onAnimeSelect(anime);
     }, 
     inputValue(anime) {
