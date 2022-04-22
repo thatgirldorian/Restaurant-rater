@@ -8,7 +8,7 @@ const createAutoComplete = ({
     fetchData }) => {
     //set up widget autocomplete function 
         root.innerHTML = `
-            <label><b>Search for a new anime below:</b></label>
+            <label><b>Search</b></label>
             <input class="input" />
                 <div class="dropdown">
                     <div class="dropdown-menu">
@@ -39,21 +39,21 @@ const createAutoComplete = ({
                 dropdown.classList.add('is-active')
                 // get each anime
                 for (let item of items) {
-                    const animeOption = document.createElement('a')
+                    const itemOption = document.createElement('a')
                     
 
-                    animeOption.classList.add('dropdown-item')
-                    animeOption.innerHTML = renderAnimeOption(item)
+                    itemOption.classList.add('dropdown-item')
+                    itemOption.innerHTML = renderAnimeOption(item)
 
                     //handling anime selection
-                    animeOption.addEventListener('click', () => {
+                    itemOption.addEventListener('click', () => {
                         dropdown.classList.remove('is-active')
                         input.value = inputValue(item)
                         //make a follow-up request to show anime info with a helper function
                         onOptionSelect(item)
                     })
 
-                    resultsWrapper.appendChild(animeOption)
+                    resultsWrapper.appendChild(itemOption)
                 }
         }
             //get the value of whatever is typed, but set timeout for unnecessary requests

@@ -16,7 +16,28 @@
             <p>Find and rate anime shows you want to watch!</p>
         </header>
 
-        <div class="container columns is-mobile">
+        <div class="container is-mobile">
+            <div class="columns">
+                <div class="column">
+                    <div class="left-box anime-box" id="left-autocomplete"></div>  
+                </div>
+
+                <div class="column">
+                    <div class="right-box anime-box" id="right-autocomplete"></div>  
+                </div>
+
+                    <!-- <div id="target"></div> -->
+            </div>
+
+            <div class="column is-half notification is-primary tutorial">
+                <h1 class="title">Search for an anime on both sides</h1>
+                <p class="subtitle">We'll let you know which one has a higher score!</p>
+            </div>
+            
+
+        </div>
+
+        <!-- <div class="container columns is-mobile">
                     <div class="left-box anime-box column">
                         <div class="autocomplete"></div>   
                         <div id="summary"></div>    
@@ -24,13 +45,13 @@
 
 
                     <div class="right-box anime-box column">
-                        <div class="autocomplete-two"></div>  
+                        <div class="autocomplete"></div>  
                         <div id="summary"></div>      
                     </div>
                         
                         <div id="target"></div>
 
-        </div>
+        </div> -->
     
     <script src="utils.js"></script>  
     <script src="autocomplete.js"></script>   

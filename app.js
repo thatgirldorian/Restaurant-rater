@@ -1,14 +1,11 @@
-//Use the axios library to make HTTP requests with a helper function to the API
-
-//call the autocomplete function
-createAutoComplete ({
-    root: document.querySelector('.autocomplete'),
-    //render an individual anime object
+//make autocomplete reusable
+const autocompleteConfig = {
+     //render an individual anime object
     renderAnimeOption(anime) {
         const imgSrc = anime.cover_image || anime.banner_image;
         return `
                     <img src="${imgSrc}" /> 
-                    ${anime.titles.en}
+                    ${anime.titles.en} (${anime.season_year})
                     `
     },
     onOptionSelect(anime) {
@@ -19,6 +16,7 @@ createAutoComplete ({
     }, 
     async fetchData(searchedAnime) {
             console.log('Start fetching data')
+            //Use the axios library to make HTTP requests with a helper function to the API
             const response = await axios.get("https://api.aniapi.com/v1/anime", {
                 headers: {
                     'Authorization': 'Bearer ****',
@@ -38,20 +36,19 @@ createAutoComplete ({
                 } else
             return animeData
         }
+}
+
+//call the autocomplete function
+createAutoComplete ({
+    ...autocompleteConfig,
+    root: document.querySelector('#left-autocomplete'),
 })
 
-//for the second anime box on the right
 createAutoComplete ({
-    root: document.querySelector('.autocomplete-two'),
-    //render an individual anime object
-    renderAnimeOption(anime) {
-        const imgSrc = anime.cover_image || anime.banner_image;
-        return `
-                    <img src="${imgSrc}" /> 
-                    ${anime.titles.en}
-                    `
-    }
+    ...autocompleteConfig,
+    root: document.querySelector('#right-autocomplete'),
 })
+
 
     const onAnimeSelect = async anime => {
         const response = await axios.get("https://api.aniapi.com/v1/anime/", {
@@ -103,10 +100,6 @@ createAutoComplete ({
     <article class="notification is-primary">
         <p class="title">${animeDetail.episodes_count}</p>
         <p class="subtitle">Episodes count</p>
-    </article>
-    <article class="notification is-primary">
-        <p class="title">${animeDetail.season_year}</p>
-        <p class="subtitle">Season year</p>
     </article>
     
         `
