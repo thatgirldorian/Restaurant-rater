@@ -7,11 +7,6 @@ const autocompleteConfig = {
                     <img src="${imgSrc}" /> 
                     ${anime.titles.en} (${anime.season_year})
                     `
-    },
-    onOptionSelect(anime) {
-        //hide tutorial/notification bar when anime show is selected
-        document.querySelector('.tutorial').classList.add('is-hidden')
-        onAnimeSelect(anime);
     }, 
     inputValue(anime) {
         return anime.titles.en
@@ -44,15 +39,25 @@ const autocompleteConfig = {
 createAutoComplete ({
     ...autocompleteConfig,
     root: document.querySelector('#left-autocomplete'),
+    onOptionSelect(anime) {
+        //hide tutorial/notification bar when anime show is selected
+        document.querySelector('.tutorial').classList.add('is-hidden')
+        onAnimeSelect(anime, document.querySelector('#left-summary'));
+    }
 })
 
 createAutoComplete ({
     ...autocompleteConfig,
     root: document.querySelector('#right-autocomplete'),
+    onOptionSelect(anime) {
+        //hide tutorial/notification bar when anime show is selected
+        document.querySelector('.tutorial').classList.add('is-hidden')
+        onAnimeSelect(anime, document.querySelector('#right-summary'));
+    }
 })
 
 
-    const onAnimeSelect = async anime => {
+    const onAnimeSelect = async (anime, summaryElement) => {
         const response = await axios.get("https://api.aniapi.com/v1/anime/", {
         headers: {
             'Authorization': 'Bearer ****',
@@ -68,7 +73,7 @@ createAutoComplete ({
     console.log(animeInformation)
 
     //render our anime anime  information
-    document.querySelector('#summary').innerHTML = animeTemplate(animeInformation[0]) 
+    summaryElement.innerHTML = animeTemplate(animeInformation[0]) 
     }
     
 

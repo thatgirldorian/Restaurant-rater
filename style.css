@@ -25,7 +25,8 @@ p {
 }
 
 .input {
-    margin-top: 20px;
+    margin-top: 10px;
+    
 }
 
 /* Anime container styles */
@@ -36,16 +37,14 @@ p {
 
 .anime-box {
     /* display: inline-block; */
-    margin: 40px 50px 40px 150px;
+    margin: 40px 50px 30px -5px;
     /* vertical-align: middle; */
-    /* padding-left: 20px;
-    padding-top: 20px; */
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 80%;
 }
 
-.anime-box img {
-    padding-top: 20px;
-    width: 150px;
-}
 
 .left-box {
     border: 1px solid gainsboro;
@@ -53,6 +52,11 @@ p {
     /* background-color: gainsboro; */
     /* width: 300px;
     height: 500px; */
+}
+
+.left-col .notification {
+    margin-bottom: 24px;
+    /* border: 1px solid red; */
 }
 
 .right-box {
