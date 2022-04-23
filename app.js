@@ -120,6 +120,8 @@ const runComparison = () => {
         const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
         const genres = animeDetail.genres.slice(0, 3)
         const animeDesc = animeDetail.descriptions.en
+        const startDate = animeDetail.start_date.substring(0, 10);
+        const endDate = animeDetail.end_date
 
         console.log(`This is ${animeDetail} `)
         return `
@@ -146,7 +148,14 @@ const runComparison = () => {
         <p class="title">${animeDetail.episodes_count}</p>
         <p class="subtitle">Episodes count</p>
     </article>
-    
+    <article class="notification is-primary">
+        <p class="title">${startDate}</p>
+        <p class="subtitle">Start Date</p>
+    </article>
+    <article class="notification is-primary">
+        <p class="title">${endDate}</p>
+        <p class="subtitle">End Date</p>
+    </article>
         `
     }
 

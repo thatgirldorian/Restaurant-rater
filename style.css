@@ -8,12 +8,11 @@ header {
     padding: 15px 0 15px 0;
     color: black;
     text-align: center;
-    /* Created with https://www.css-gradient.com */
-    background: #52BD95;
-    background: -webkit-linear-gradient(bottom, #52BD95, #F8F8F8);
-    background: -moz-linear-gradient(bottom, #52BD95, #F8F8F8);
-    background: linear-gradient(to top, #52BD95, #F8F8F8);
-}
+    background: #C6EEE5;
+    background: -webkit-linear-gradient(right, #C6EEE5, #1AA975);
+    background: -moz-linear-gradient(right, #C6EEE5, #1AA975);
+    background: linear-gradient(to left, #C6EEE5, #1AA975);
+    }
 
 header h1 {
     font-weight: bold;
