@@ -42,7 +42,7 @@ createAutoComplete ({
     onOptionSelect(anime) {
         //hide tutorial/notification bar when anime show is selected
         document.querySelector('.tutorial').classList.add('is-hidden')
-        onAnimeSelect(anime, document.querySelector('#left-summary'));
+        onAnimeSelect(anime, document.querySelector('#left-summary'), 'left');
     }
 })
 
@@ -52,12 +52,14 @@ createAutoComplete ({
     onOptionSelect(anime) {
         //hide tutorial/notification bar when anime show is selected
         document.querySelector('.tutorial').classList.add('is-hidden')
-        onAnimeSelect(anime, document.querySelector('#right-summary'));
+        onAnimeSelect(anime, document.querySelector('#right-summary'), 'right');
     }
 })
 
-
-    const onAnimeSelect = async (anime, summaryElement) => {
+    //compare both anime shows
+    let leftAnime
+    let rightAnime
+    const onAnimeSelect = async (anime, summaryElement, side) => {
         const response = await axios.get("https://api.aniapi.com/v1/anime/", {
         headers: {
             'Authorization': 'Bearer ****',
@@ -74,11 +76,47 @@ createAutoComplete ({
 
     //render our anime anime  information
     summaryElement.innerHTML = animeTemplate(animeInformation[0]) 
+    //more anime comparison 
+    if (side === 'left') {
+        leftAnime = animeInformation
+    } else {
+        rightAnime = animeInformation
     }
+
+    //run anime comparison
+    if (leftAnime && rightAnime) {
+        runComparison()
+    }
+}
+
+const runComparison = () => {
+    const leftHandStats = document.querySelectorAll('#left-summary .notification')
+    const rightHandStats = document.querySelectorAll('#right-summary .notification')
+
+    leftHandStats.forEach((leftStat, index) => {
+        const rightStat = rightHandStats[index]
+        //get the value on each side
+        const leftHandValue = leftStat.dataset.value
+        const rightHandValue = rightStat.dataset.value
+
+        if (rightHandValue > leftHandValue) {
+            leftStat.classList.remove('is-primary')
+            leftStat.classList.add('is-warning')
+        } else {
+            rightStat.classList.remove('is-primary')
+            rightStat.classList.add('is-warning')
+        }
+    })
+};
+
     
 
     //helper function to create out anime info on our web page
     const animeTemplate = animeDetail => {
+        //extract the score value and compare anime show scores
+        const animeScore = animeDetail.score
+        const episodeCount = animeDetail.episodes_count
+
         const imgSrc = animeDetail.cover_image || animeDetail.banner_image;
         const genres = animeDetail.genres.slice(0, 3)
         const animeDesc = animeDetail.descriptions.en
@@ -100,11 +138,11 @@ createAutoComplete ({
         </div>
     </article>
 
-    <article class="notification is-primary">
+    <article data-value=${animeScore} class="notification is-primary">
         <p class="title">${animeDetail.score}</p>
         <p class="subtitle">Score</p>
     </article>
-    <article class="notification is-primary">
+    <article data-value=${episodeCount} class="notification is-primary">
         <p class="title">${animeDetail.episodes_count}</p>
         <p class="subtitle">Episodes count</p>
     </article>
