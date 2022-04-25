@@ -9,7 +9,7 @@ const createAutoComplete = ({
     //set up widget autocomplete function 
         root.innerHTML = `
             <label><b>Search</b></label>
-            <input class="input" />
+            <input class="input is-dark" />
                 <div class="dropdown">
                     <div class="dropdown-menu">
                         <div class="dropdown-content results"></div>
