@@ -16,7 +16,7 @@ This is an application that allows you rate anime shows based on their scores. Y
 - Bulma CSS
 - GitHub
 - Netlify
-- The Ani API
+- <a href="https://aniapi.com/docs/">The Ani API</a>
 
 <h3>Link to site:</h3>
 https://anime-rater.netlify.app/
